@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RequestMapping(path = "/api/v1")
 @RestController
 public class UserController {
 
