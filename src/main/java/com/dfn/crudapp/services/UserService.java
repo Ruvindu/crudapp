@@ -27,7 +27,7 @@ public class UserService {
         return (List<User>) userRepo.findAll();
     }
 
-    public User getUser(Long uid) {
+    public User getUser(Long uid) throws Exception{
         return userRepo.findById(uid).get();
     }
 

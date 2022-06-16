@@ -1,8 +1,13 @@
 package com.dfn.crudapp.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
     @Column(name = "id", nullable = false)
@@ -14,25 +19,6 @@ public class User {
     private String role;
     private String password;
 
-    public User() {
-    }
-
-    public User(String name, String email, String phone, String role, String password) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.role = role;
-        this.password = password;
-    }
-
-    public User(Long id, String name, String email, String phone, String role, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.role = role;
-        this.password = password;
-    }
 
 
     public String getRole() {
@@ -82,4 +68,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
