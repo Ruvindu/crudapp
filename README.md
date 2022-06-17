@@ -42,7 +42,7 @@ API endpoints
 ##### PUT
 
 `http://localhost:8080/api/v1/updateuser`
-
+<pre>
 {
         "id": 1,
         "name": "kumara",
@@ -51,6 +51,7 @@ API endpoints
         "role": "Senior SE",
         "password": "852pwd"
 }
+</pre>
 
 ##### delete
 
