@@ -15,6 +15,7 @@ API endpoints
 
 `http://localhost:8080/api/v1/adduser`
 
+<pre>
 {   "user":{
         "name":"nuwan",
         "email":"nuwan@gmail.com",
@@ -35,6 +36,7 @@ API endpoints
         ]
     }
 }
+</pre>
 
 
 ##### PUT
