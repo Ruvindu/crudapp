@@ -15,18 +15,34 @@ API endpoints
 
 `http://localhost:8080/api/v1/adduser`
 
-{
-        "name": "kumara",
-        "email": "kumara@gmail.com",
-        "phone": "07112345678",
-        "role": "SE",
-        "password": "852pwd"
+<pre>
+{   "user":{
+        "name":"nuwan",
+        "email":"nuwan@gmail.com",
+        "password":"pwd652",
+        "phone":"0711234657",
+        "role":"BA",
+        "locations":[
+            {
+                "id":1,
+                "address":"No.101/2,Gall road,Moratuwa.",
+                "zipcode":"10025"
+            },
+            {
+                "id":2,
+                "address":"No.105,Gamudawa,Kamburupiyiya.",
+                "zipcode":"12025"
+            }
+        ]
+    }
 }
+</pre>
+
 
 ##### PUT
 
 `http://localhost:8080/api/v1/updateuser`
-
+<pre>
 {
         "id": 1,
         "name": "kumara",
@@ -35,6 +51,7 @@ API endpoints
         "role": "Senior SE",
         "password": "852pwd"
 }
+</pre>
 
 ##### delete
 
