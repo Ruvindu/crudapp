@@ -1,6 +1,7 @@
 package com.dfn.crudapp.controllers;
 
 import com.dfn.crudapp.dto.UserDTO;
+import com.dfn.crudapp.entity.Location;
 import com.dfn.crudapp.entity.User;
 import com.dfn.crudapp.services.UserService;
 import org.springframework.beans.BeanUtils;
@@ -16,7 +17,7 @@ import java.util.Map;
 @RestController
 public class UserController {
 
-    final UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -25,19 +26,15 @@ public class UserController {
 
 //  Get all users
     @GetMapping(path = "/getusers")
-    public List<User> getUsers() {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> getUsers() {
+        return ResponseEntity.ok().body(userService.getUsers());
     }
 //  Get specific user by id
     @GetMapping(path = "getuser/{uid}")
-    public ResponseEntity<UserDTO> getuser(@PathVariable Long uid) {
+    public ResponseEntity<User> getuser(@PathVariable Long uid) {
         //create dto object and assign properties without password, then return userdto using ResponseEntity with 200 status
-
-        UserDTO userdto = new UserDTO();
         try {
-            User user = userService.getUser(uid);
-            BeanUtils.copyProperties(user,userdto);
-            return  ResponseEntity.ok().body(userdto);
+            return  ResponseEntity.ok().body(userService.getUser(uid));
         }catch (Exception e){
             return  ResponseEntity.notFound().build();
         }
@@ -45,11 +42,24 @@ public class UserController {
 
     }
 //  Create new user
-    @PostMapping(path = "/adduser")
+    @PostMapping(path = "/add-partial-user")
     public ResponseEntity createUser(@RequestBody User user) {
 
         try {
-            userService.createUser(user);
+            userService.createPartialUser(user);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+//            throw new IllegalStateException("User can't be create");
+            return ResponseEntity.internalServerError().build();
+        }
+
+    }
+
+    @PostMapping(path = "/adduser")
+    public ResponseEntity createUser(@RequestBody UserDTO userdto) {
+
+        try {
+            userService.createUser(userdto);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
 //            throw new IllegalStateException("User can't be create");

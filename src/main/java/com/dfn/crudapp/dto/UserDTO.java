@@ -1,12 +1,15 @@
 package com.dfn.crudapp.dto;
 
+import com.dfn.crudapp.entity.User;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class UserDTO {
-    private Long id;
-    private String name;
-    private String email;
-    private String phone;
-    private String role;
+    private User user;
 }

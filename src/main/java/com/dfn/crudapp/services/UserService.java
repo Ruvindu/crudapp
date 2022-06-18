@@ -1,5 +1,6 @@
 package com.dfn.crudapp.services;
 
+import com.dfn.crudapp.dto.UserDTO;
 import com.dfn.crudapp.entity.User;
 import com.dfn.crudapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public void createUser(User user) throws Exception {
+    public void createPartialUser(User user) throws Exception {
         userRepo.save(user);
+    }
+
+    public void createUser(UserDTO userdto) throws Exception {
+        userRepo.save(userdto.getUser());
     }
 
     public List<User> getUsers() {

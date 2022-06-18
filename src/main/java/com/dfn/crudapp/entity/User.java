@@ -1,17 +1,21 @@
 package com.dfn.crudapp.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class User {
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     private String name;
     private String email;
@@ -19,15 +23,9 @@ public class User {
     private String role;
     private String password;
 
-
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+    @OneToMany(targetEntity = Location.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "usr_fk",referencedColumnName = "id")
+    private List<Location> locations;
 
     public Long getId() {
         return id;
@@ -61,6 +59,14 @@ public class User {
         this.phone = phone;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -69,4 +75,11 @@ public class User {
         this.password = password;
     }
 
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
 }
