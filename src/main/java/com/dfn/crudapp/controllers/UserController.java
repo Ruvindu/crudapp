@@ -1,10 +1,8 @@
 package com.dfn.crudapp.controllers;
 
 import com.dfn.crudapp.dto.UserDTO;
-import com.dfn.crudapp.entity.Location;
 import com.dfn.crudapp.entity.User;
 import com.dfn.crudapp.services.UserService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
